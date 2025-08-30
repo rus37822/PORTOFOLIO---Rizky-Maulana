@@ -1,0 +1,582 @@
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizky Muhamad Ramdan | UI/UX Designer & Front-End Developer</title>
+    <meta name="description" content="Portofolio pribadi Rizky Muhamad Ramdan, seorang UI/UX Designer & Front-End Developer yang menciptakan pengalaman digital intuitif dan memukau.">
+    <meta name="keywords" content="rizky muhamad ramdan, ui/ux designer, front-end developer, portfolio, web developer, figma, react, javascript">
+
+    <style>
+        /* 1. Import Font & Variabel CSS */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+
+        :root {
+            --bg-color: #F8F9FA;
+            --text-color: #212529;
+            --card-bg-color: #FFFFFF;
+            --border-color: #DEE2E6;
+            --accent-color: #007BFF;
+            --accent-color-hover: #0056b3;
+            --header-bg: rgba(248, 249, 250, 0.85);
+            --shadow-color: rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #E0E0E0;
+            --card-bg-color: #1E1E1E;
+            --border-color: #333333;
+            --accent-color: #0D6EFD;
+            --accent-color-hover: #3D8BFF;
+            --header-bg: rgba(30, 30, 30, 0.85);
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+
+        /* 2. Reset & Pengaturan Dasar */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--accent-color-hover);
+        }
+
+        /* 3. Utilitas & Layout Global */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+        }
+
+        /* 4. Header / Navbar */
+        .header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            background-color: var(--header-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-color);
+            padding: 0.5rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            padding: 0.5rem;
+        }
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+        #icon-sun, #icon-moon {
+            transition: transform 0.3s ease;
+        }
+        [data-theme="light"] #icon-sun { display: none; }
+        [data-theme="dark"] #icon-moon { display: none; }
+
+
+        /* 5. Hero Section */
+        #hero {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            min-height: calc(100vh - 70px); /* Tinggi viewport dikurangi tinggi header */
+            padding-top: 0;
+            padding-bottom: 3rem;
+            gap: 2.5rem;
+        }
+
+        .hero-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0;
+            border: 6px solid var(--accent-color);
+            box-shadow: 0 8px 32px rgba(0,123,255,0.15), 0 2px 8px rgba(0,0,0,0.08);
+            transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+        }
+        .hero-img:hover {
+            box-shadow: 0 12px 40px rgba(0,123,255,0.25), 0 4px 16px rgba(0,0,0,0.12);
+            border-color: var(--accent-color-hover);
+            transform: scale(1.04) rotate(-2deg);
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            background: rgba(0,123,255,0.04);
+            border-radius: 18px;
+            padding: 2.2rem 2.5rem;
+            box-shadow: 0 2px 12px rgba(0,123,255,0.06);
+        }
+
+        .hero-name {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-color-hover);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+
+        /* 6. Tentang Saya */
+        #tentang .container {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            list-style: none;
+        }
+        
+        .skill-badge {
+            background-color: var(--card-bg-color);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* 7. Proyek */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px var(--shadow-color);
+        }
+
+        .project-card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .project-card-body {
+            padding: 1.5rem;
+        }
+
+        .project-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card-description {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+        }
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* 8. Kontak */
+        #kontak .container {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        #kontak p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-email {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .social-links a svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--text-color);
+            transition: transform 0.2s ease-in-out, fill 0.2s ease-in-out;
+        }
+
+        .social-links a:hover svg {
+            fill: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0 1.5rem 0;
+            padding: 0;
+            list-style: none;
+        }
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1.1rem;
+        }
+        .contact-list a {
+            color: var(--text-color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.2s;
+        }
+        .contact-list a:hover {
+            color: var(--accent-color);
+        }
+        .contact-list i {
+            font-size: 1.3em;
+            color: #0077b6;
+            min-width: 1.5em;
+            text-align: center;
+        }
+
+        /* 9. Footer */
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            background-color: var(--card-bg-color);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* 10. Responsif (Mobile) */
+        @media (max-width: 768px) {
+            html {
+                font-size: 15px;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+            }
+            .nav-link {
+                padding: 0.2rem;
+            }
+
+            .hero-name {
+                font-size: 2.5rem;
+            }
+            .hero-title {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        @media (max-width: 900px) {
+            #hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .hero-content {
+                align-items: center;
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container navbar">
+            <a href="#" class="nav-logo">RM.</a>
+            <ul class="nav-menu">
+                <li><a href="#tentang" class="nav-link">Tentang</a></li>
+                <li><a href="#projek" class="nav-link">Projek</a></li>
+                <li><a href="#kontak" class="nav-link">Kontak</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode">
+                        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.836 17.894a.75.75 0 011.06 0l1.59 1.591a.75.75 0 11-1.06 1.06l-1.59-1.59a.75.75 0 010-1.06zM12 21.75a.75.75 0 01-.75-.75v-2.25a.75.75 0 011.5 0V21a.75.75 0 01-.75.75zM5.106 17.894a.75.75 0 010-1.06l1.59-1.591a.75.75 0 111.06 1.06l-1.59 1.59a.75.75 0 01-1.06 0zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM6.106 6.106a.75.75 0 011.06 0l1.591 1.59a.75.75 0 01-1.06 1.06l-1.59-1.591a.75.75 0 010-1.06z"></path></svg>
+                        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-3.51 1.71-6.635 4.342-8.532a.75.75 0 01.818.162z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="container">
+            <img src="https://www.upload.ee/image/18534475/WhatsApp_Image_2025-08-30_at_15.39.46.jpeg" alt="Foto Profil" class="hero-img">
+            <div class="hero-content">
+                <h1 class="hero-name">Rizky maulana</h1>
+                <p class="hero-title">UI/UX Designer & Front-End Developer</p>
+                <p class="hero-tagline">Menciptakan pengalaman digital yang intuitif dan memukau.</p>
+                <a href="#projek" class="btn btn-primary">Lihat Projek Saya</a>
+            </div>
+        </section>
+
+        <section id="tentang">
+            <div class="container">
+                <h2 class="section-title">Tentang Saya</h2>
+                <p class="about-text">
+                    nama saya rizky maulana dari SMKN 1 CIOMAS kelas 10 PPLG 3.saya seorang pengembang web yang berfokus pada pembuatan website modern dan responsif
+                </p>
+                <ul class="skills-list">
+                    <li class="skill-badge">Figma</li>
+                    <li class="skill-badge">UI Design</li>
+                    <li class="skill-badge">UX Research</li>
+                    <li class="skill-badge">HTML5</li>
+                    <li class="skill-badge">CSS3</li>
+                    <li class="skill-badge">JavaScript</li>
+                    <li class="skill-badge">React</li>
+                    <li class="skill-badge">Responsive Design</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projek">
+            <div class="container">
+                <h2 class="section-title">hobi saya</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=400&h=300&auto=format&fit=crop" alt="Gambar Proyek E-commerce" class="project-card-img">
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">bermain volly</h3>
+                            <p class="project-card-description">mengikuti eskul dan mengikuti les volly.</p>
+                            <a href="#" class="btn btn-secondary">Lihat Detail</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=400&h=300&auto=format&fit=crop" alt="Gambar Proyek Dashboard Analitik" class="project-card-img">
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">bermain gitar</h3>
+                            <p class="project-card-description">saat sedang ada waktu luang atau saat berkumpul dengan teman teman.</p>
+                            <a href="#" class="btn btn-secondary">Lihat Detail</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d1469c9b?q=80&w=400&h=300&auto=format&fit=crop" alt="Gambar Proyek Website Portofolio" class="project-card-img">
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">bermain game</h3>
+                            <p class="project-card-description">untuk mengisi waktu luang saya.</p>
+                            <a href="#" class="btn btn-secondary">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak">
+            <div class="container">
+                <h2 class="section-title">TERIMA KASIH</h2>
+                <p>Saya selalu senang saat melakukan semua aktifitas dan hobi saya.</p>
+                <a href="mailto:rizky.ramdan@email.com" class="contact-email">rizky.maulana@email.com</a>
+                <ul class="social-links">
+                    <li><a href="#" target="_blank" title="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                    </a></li>
+                    <li><a href="#" target="_blank" title="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3.3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-23.3 2.6-57.5 0 0 21.1-7.4 69.1 25.8 20.1-5.6 41.6-8.4 63.1-8.4 21.6 0 43.1 2.8 63.1 8.4 48-33.3 69.1-25.8 69.1-25.8 13.7 34.2 5.2 51 2.6 57.5 16 17.6 23.6 31.4 23.6 58.9 0 96.5-56.4 104.2-112.6 110.2 9.1 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 85.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                    </a></li>
+                    <li><a href="#" target="_blank" title="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+                    </a></li>
+                </ul>
+                <ul class="contact-list">
+                    <li><a href="mailto:rizky.maulana@email.com"><i class="fa-solid fa-envelope"></i>Email: rizky.maulana@email.com</a></li>
+                    <li><a href="https://wa.me/6281234567890" target="_blank"><i class="fa-brands fa-whatsapp"></i>WhatsApp: 0812-3456-7890</a></li>
+                    <li><a href="https://instagram.com/username" target="_blank"><i class="fa-brands fa-instagram"></i>Instagram: @username</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Rizky M. Dibuat dengan sepenuh hati.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Skrip untuk Theme Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const iconSun = document.getElementById('icon-sun');
+        const iconMoon = document.getElementById('icon-moon');
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+
+            if (document.body.classList.contains('dark-theme')) {
+                iconSun.style.transform = 'rotate(180deg)';
+                iconMoon.style.transform = 'rotate(0deg)';
+                document.querySelector('meta[name="theme-color"]').setAttribute('content', '#121212');
+            } else {
+                iconSun.style.transform = 'rotate(0deg)';
+                iconMoon.style.transform = 'rotate(180deg)';
+                document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFFFFF');
+            }
+        });
+    </script>
+</body>
+</html>
